@@ -11,7 +11,6 @@ Run the command 'mocha' to test. Tests check for expected output and absence of 
 */
 
 
-
 module.exports = {
 
   sum: (arr, base) => {
@@ -32,24 +31,22 @@ module.exports = {
   },
 
   convertNameArrayToObject: (arr) => {
-    let nameObj = [];
-    for(var i = 0; i < arr.length; i++){
-      let obj = {};
-      obj.first = arr[i][0];
-      obj.last = arr[i][1];
-      nameObj.push(obj);
-    }
+    let nameObj = arr.map(element => {
+      let obj = {first: element[0], last: element[1]};
+      return obj;
+    })
     return nameObj;
   },
 
   objContainsProp: (arr, prop) => {
-    for (var i = 0; i < arr.length; i++){
-      if(!arr[i].hasOwnProperty(prop)){
-        return false;
-      }
-    }
-    return true;
-  },
+    return arr.every(function(element) {
+      if(!element.hasOwnProperty(prop)){
+          return false;
+        }else{
+          return true;
+        }
+    });
+},
 
   stringMatch: (arr, str) => {
     let matches = [];
