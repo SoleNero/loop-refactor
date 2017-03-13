@@ -22,12 +22,13 @@ module.exports = {
   },
 
   someObjsContainProp: (arr, prop) => {
-    for(var i = 0; i < arr.length; i++){
-      if(arr[i].hasOwnProperty(prop)){
-        return true;
-      }
-    }
-    return false;
+    return arr.some(function(arrProp){
+        if(arrProp.hasOwnProperty(prop)){
+          return true;
+        }else{
+          return false;
+        }
+    });
   },
 
   convertNameArrayToObject: (arr) => {
