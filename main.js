@@ -49,12 +49,8 @@ module.exports = {
 },
 
   stringMatch: (arr, str) => {
-    let matches = [];
-    for(var i = 0; i < arr.length; i++){
-      if (arr[i].includes(str)){
-        matches.push(arr[i]);
-      }
-    }
-    return matches;
+    return arr.filter(element =>{
+      return element.includes(str);
+    })
   },
 };
